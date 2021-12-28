@@ -6,6 +6,9 @@
 #include <QSemaphore>
 #include <QQueue>
 #include <QMutexLocker>
+#include <iostream>
+
+
 
 class PoolThreadTasking : public QObject {
     Q_OBJECT
@@ -16,6 +19,8 @@ public:
     ~PoolThreadTasking();
    ///< завершение работы потоков
    void clear_();
+
+   void stopThreads();
 
    /*! \fn void addTask_();
     * \brief функция добавления задач(функций) в очередь
@@ -30,18 +35,16 @@ public:
 
        cond_.notify_one(); // Разблокирует один из потоков, которые ожидают объект condition_variable.
    }
+signals:
+   void finished();
+   void stopAll();
 
 private:
-    class ThreadWorker : public QThread {
-       private:
-           PoolThreadTasking * m_pool;
-       public:
-           explicit ThreadWorker(PoolThreadTasking * pool,QObject *parent = 0);
-           void loopFunc();
-       };
+   class ThreadWorker;
+
 
 ///< пул потоков
-   std::vector<ThreadWorker> threads_;
+   std::vector<ThreadWorker*> threads_;
    ///< для выхода из бесконечного цикла
    bool finishedJob_{false};
    ///< очередь для выполнения функций
@@ -54,4 +57,22 @@ private:
 
    ///< инициализация потоков
    void init_(int &numberThreads);
+};
+
+
+
+class PoolThreadTasking::ThreadWorker : public QObject {
+ Q_OBJECT
+   public:
+       explicit ThreadWorker(PoolThreadTasking * pool,QObject *parent = 0);
+       void loopFunc();
+
+    public slots:
+
+       void finish_worker();
+    public :
+signals:
+        void finished();
+private:
+    PoolThreadTasking * m_pool;
 };

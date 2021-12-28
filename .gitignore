@@ -1,0 +1,107 @@
+# This file is used to ignore files which are generated
+# ----------------------------------------------------------------------------
+
+*~
+*.autosave
+*.a
+*.core
+*.moc
+*.o
+*.obj
+*.orig
+*.rej
+*.so
+*.so.*
+*_pch.h.cpp
+*_resource.rc
+*.qm
+.#*
+*.*#
+core
+!core/
+tags
+.DS_Store
+.directory
+*.debug
+Makefile*
+*.prl
+*.app
+moc_*.cpp
+ui_*.h
+qrc_*.cpp
+Thumbs.db
+*.res
+*.rc
+/.qmake.cache
+/.qmake.stash
+
+# qtcreator generated files
+*.pro.user*
+
+# xemacs temporary files
+*.flc
+
+# Vim temporary files
+.*.swp
+
+# Visual Studio generated files
+*.ib_pdb_index
+*.idb
+*.ilk
+*.pdb
+*.sln
+*.suo
+*.vcproj
+*vcproj.*.*.user
+*.ncb
+*.sdf
+*.opensdf
+*.vcxproj
+*vcxproj.*
+
+# MinGW generated files
+*.Debug
+*.Release
+
+# Python byte code
+*.pyc
+
+# Binaries
+# --------
+*.dll
+*.exe
+
+# Qt Build temporary files & folders
+build*
+!build.sh
+!build_deploy.sh
+!build-gui.sh
+!build_all.sh
+*.txt.user
+*user*
+*.save
+*.autosave
+*.clang_tidy
+
+# Temporary user configurations
+CMakeLists.txt.*
+.cmake*
+
+# CLion temporary files & folders
+./idea*
+.idea*
+cmake-build-debug*
+
+# Doxygen temporary files & folders
+doxygen*
+*.info*
+!doc/img/doxygen.png
+
+# Code coverage temporary files & folders
+coverage*
+!doc/img/coverage.png
+
+# CLang-Tidy static analyzer temporary files & folders
+.clang-format
+
+*.md5

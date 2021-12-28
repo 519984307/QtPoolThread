@@ -29,7 +29,8 @@ void TestMultipleThreads::testF(const int &number_threads){
     std::cout << "Selected " <<  numThread_ << " threads"<< std::endl;
 
     PoolThreadTasking pTD(numThread_);
-
+    QThread *test = new QThread();
+    pTD.moveToThread(test);
     int number_task = 5;
     auto *timer_one = new Timer();
     timer_one->timeStart();
@@ -40,6 +41,8 @@ void TestMultipleThreads::testF(const int &number_threads){
     }
 
     pTD.clear_();
+
+
     std::cout << timer_one->timeEnd("With multiple threads ") << std::endl;
 
     timer_one->timeStart();
