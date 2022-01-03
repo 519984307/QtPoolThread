@@ -1,4 +1,4 @@
-# Pool Thread on Qt
+# Pool Thread Qt
 
 *Table of Contents*
 ---------
